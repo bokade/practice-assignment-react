@@ -17,10 +17,7 @@ export default function CompanyList({ onEdit, onDelete, reload }) {
     fontSize: "14px"
   };
 
-  useEffect(() => {
-    loadCompanies();
-  }, [reload, page, size]);
-
+  // ✅ API call function
   const loadCompanies = async () => {
     const res = await getCompanies({
       pageIndex: page,
@@ -33,16 +30,21 @@ export default function CompanyList({ onEdit, onDelete, reload }) {
     setTotal(res.data.totalRecords || 0);
   };
 
+  // ✅ Single source of API call
+  useEffect(() => {
+    loadCompanies();
+  }, [reload, page, size, companyName, registrationNumber]);
+
+  // ✅ Search = only state change
   const handleSearch = () => {
     setPage(0);
-    loadCompanies();
   };
 
+  // ✅ Reset = only state change
   const handleReset = () => {
     setCompanyName("");
     setRegistrationNumber("");
     setPage(0);
-    loadCompanies();
   };
 
   const totalPages = Math.ceil(total / size);
@@ -147,7 +149,7 @@ export default function CompanyList({ onEdit, onDelete, reload }) {
         </tbody>
       </table>
 
-      {/* 🔢 Pagination */}
+      {/*  Pagination */}
       {total > 0 && (
         <div
           style={{
@@ -157,7 +159,6 @@ export default function CompanyList({ onEdit, onDelete, reload }) {
             marginTop: "12px"
           }}
         >
-          {/* Items per page */}
           <div>
             <span>Items per page: </span>
             <select
@@ -173,7 +174,6 @@ export default function CompanyList({ onEdit, onDelete, reload }) {
               <option value={20}>20</option>
             </select>
           </div>
-
           {/* Prev / Next */}
           <div>
             <button

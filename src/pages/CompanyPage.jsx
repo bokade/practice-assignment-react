@@ -11,7 +11,7 @@ export default function CompanyPage() {
   const [activeTab, setActiveTab] = useState("FORM");
   const [editCompany, setEditCompany] = useState(null);
 
-  const [success, setSuccess] = useState("");
+  const [success, setSuccess] = useState("");                  
   const [error, setError] = useState("");
 
   const [reload, setReload] = useState(false);
