@@ -17,7 +17,7 @@ export default function CompanyList({ onEdit, onDelete, reload }) {
     fontSize: "14px"
   };
 
-  // ✅ API call function
+  // API call function
   const loadCompanies = async () => {
     const res = await getCompanies({
       pageIndex: page,
@@ -30,17 +30,17 @@ export default function CompanyList({ onEdit, onDelete, reload }) {
     setTotal(res.data.totalRecords || 0);
   };
 
-  // ✅ Single source of API call
+  // Single source of API call
   useEffect(() => {
     loadCompanies();
   }, [reload, page, size, companyName, registrationNumber]);
 
-  // ✅ Search = only state change
+  //  Search = only state change
   const handleSearch = () => {
     setPage(0);
   };
 
-  // ✅ Reset = only state change
+  //  Reset = only state change
   const handleReset = () => {
     setCompanyName("");
     setRegistrationNumber("");
@@ -89,7 +89,7 @@ export default function CompanyList({ onEdit, onDelete, reload }) {
         </button>
       </div>
 
-      {/* 📋 Table */}
+      {/*  Table */}
       <table border="1" width="100%">
         <thead>
           <tr>

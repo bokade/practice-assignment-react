@@ -13,11 +13,7 @@ export default function DriverList({ onEdit, reload }) {
 
   const controlStyle = { height: "32px", padding: "0 10px", fontSize: "14px", boxSizing: "border-box" };
 
-  useEffect(() => {
-    loadDrivers();
-  }, [page, size, reload]);
-
-  const loadDrivers = async () => {
+ const loadDrivers = async () => {
     const res = await getDrivers({
       firstName,
       lastName,
@@ -28,6 +24,12 @@ export default function DriverList({ onEdit, reload }) {
     setDrivers(res.data.drivers || []);
     setTotal(res.data.totalRecords || 0);
   };
+
+  useEffect(() => {
+    loadDrivers();
+  }, [page, size, reload]);
+
+ 
 
   const handleSearch = () => {
     setPage(0);
