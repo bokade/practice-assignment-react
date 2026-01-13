@@ -51,7 +51,7 @@ export default function CompanyList({ onEdit, onDelete, reload }) {
 
   return (
     <>
-      {/* 🔍 Search */}
+      {/*  Search */}
       <div
         style={{
           display: "flex",
@@ -177,11 +177,7 @@ export default function CompanyList({ onEdit, onDelete, reload }) {
           {/* Prev / Next */}
           <div>
             <button
-              disabled={page === 0}
-              onClick={() => setPage(page - 1)}
-            >
-              Prev
-            </button>
+              disabled={page === 0} onClick={() => setPage(page - 1)}> Prev </button>
 
             <span style={{ margin: "0 10px" }}>
               Page {page + 1} of {totalPages}
